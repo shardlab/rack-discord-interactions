@@ -1,0 +1,27 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+inherit_mode:
+  merge:
+    - AllowedNames
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.5
+  SuggestExtensions: false
+
+Naming/FileName:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '*.gemspec'
+    - 'spec/**/*.rb'
+
+RSpec/NestedGroups:
+  Max: 4
+
+RSpec/FilePath:
+  Enabled: false

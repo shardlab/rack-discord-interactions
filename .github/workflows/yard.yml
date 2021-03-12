@@ -1,0 +1,32 @@
+ame: YARD
+
+on:
+  push:
+    paths-ignore:
+      - "*.gemspec"
+      - "CHANGELOG.md"
+      - ".rubocop.yml"
+      - ".rspec"
+      - "Rakefile"
+  pull_request:
+    paths-ignore:
+      - "*.gemspec"
+      - "CHANGELOG.md"
+      - ".rubocop.yml"
+      - ".rspec"
+      - "Rakefile"
+
+jobs:
+  yard:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.5.0
+        bundler-cache: true
+    - name: Install dependencies
+      run: bundle install
+    - name: Run YARD
+      run: bundle exec yard doc
